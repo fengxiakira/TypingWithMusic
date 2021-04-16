@@ -35,6 +35,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import ca.yorku.eecs.mack.softkeyboard.KeyboardPanel.OnKeystrokeListener;
 
@@ -446,10 +448,16 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
     private String sd2Leader; // sd2Leader to identify conditions for data written to sd2 files.
 //todo: New variable
     ImageButton startbutton,pauseButton;
-    protected SeekBar seekBar;
     MediaPlayer mediaPlayer;
     private boolean isPause = false;
     CountDownTimer playbackTimer;
+    private Timer timer;
+    protected TextView tv_start;
+    protected TextView tv_end;
+    private boolean isSeekbarChaning;
+
+    protected SeekBar seekBar;
+
     // compute typing speed in wpm, given text entered and time in ms
     public static float wpm(String text, long msTime)
     {
@@ -457,6 +465,90 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
         speed = speed / (msTime / 1000.0f) * (60 / 5);
         return speed;
     }
+
+//    Retrieved from https://cloud.tencent.com/developer/article/1705162
+    public String calculateTime(int time){
+        int minute;
+        int second;
+        if(time > 60){
+            minute = time / 60;
+            second = time % 60;
+            if(minute >= 0 && minute < 10){
+                if(second >= 0 && second < 10){
+                    return "0"+minute+":"+"0"+second;
+                }else {
+                    return "0"+minute+":"+second;
+                }
+            }else {
+                if(second >= 0 && second < 10){
+                    return minute+":"+"0"+second;
+                }else {
+                    return minute+":"+second;
+                }
+            }
+        }else if(time < 60){
+            second = time;
+            if(second >= 0 && second < 10){
+                return "00:"+"0"+second;
+            }else {
+                return "00:"+ second;
+            }
+        }
+        return null;
+    }
+
+    private void initPlayerUI()
+    {
+        tv_start = (TextView)findViewById(R.id.tv_start);
+        tv_end = (TextView)findViewById(R.id.tv_end);
+        seekBar = (SeekBar)findViewById(R.id.seekbar);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                int duration2 = mediaPlayer.getDuration() / 1000;
+//                int position = mediaPlayer.getCurrentPosition();
+//                tv_start.setText(calculateTime(position / 1000));
+//                tv_end.setText(calculateTime(duration2));
+                musicTimeShow();
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                isSeekbarChaning = true;
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                isSeekbarChaning = false;
+                mediaPlayer.seekTo(seekBar.getProgress());
+                tv_start.setText(calculateTime(mediaPlayer.getCurrentPosition() / 1000));
+            }
+        });
+        startbutton.setOnClickListener(this);
+        pauseButton.setOnClickListener(this);
+    }
+
+    private void musicTimeShow()
+    {
+        int duration2 = mediaPlayer.getDuration() / 1000;
+        int position = mediaPlayer.getCurrentPosition();
+        tv_start.setText(calculateTime(position / 1000));
+        tv_end.setText(calculateTime(duration2));
+    }
+
+    private void initMediaPlayer()
+    {
+        mediaPlayer = MediaPlayer.create(SoftKeyboardActivity.this,R.raw.music);
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer arg0) {
+                play();
+            }
+        });
+
+        musicTimeShow();
+    }
+
+
 
     // Called when the activity is first created
     @Override
@@ -471,15 +563,16 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
         pauseButton.setOnClickListener(this);
         hintText = (TextView)findViewById(R.id.hint);
 
-        seekBar = (SeekBar)findViewById(R.id.seekbar);
-        mediaPlayer = MediaPlayer.create(SoftKeyboardActivity.this,R.raw.music);
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer arg0) {
-                // TODO Auto-generated method stub
-                play();
-            }
-        });
+        initPlayerUI();
+        initMediaPlayer();
+
+//        mediaPlayer = MediaPlayer.create(SoftKeyboardActivity.this,R.raw.music);
+//        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer arg0) {
+//                play();
+//            }
+//        });
 
         // init study parameters from shared preferences passed from setup dialog
         Bundle b = getIntent().getExtras();
@@ -578,7 +671,8 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
         if (!dataDirectory.exists() && !dataDirectory.mkdirs())
         {
             Log.e(MYDEBUG, "ERROR --> FAILED TO CREATE DIRECTORY: " + DATA_DIRECTORY);
-            super.onDestroy(); // cleanup
+//            super.onDestroy(); // cleanup
+            onDestroy();
             this.finish(); // terminate
         }
 
@@ -617,7 +711,8 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
         } catch (IOException e)
         {
             Log.e(MYDEBUG, "ERROR OPENING DATA FILES! e=" + e.toString());
-            super.onDestroy();
+//            super.onDestroy();
+            onDestroy();
             this.finish();
 
         } // end file initialization
@@ -793,7 +888,8 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
         } catch (IOException e)
         {
             Log.e("MYDEBUG", "ERROR WRITING TO DATA FILE!\n" + e);
-            super.onDestroy();
+//            super.onDestroy();
+            onDestroy();
             this.finish();
         }
 
@@ -859,6 +955,7 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
         // 24/03/2017: finish by returning to the setup dialog
         startActivity(new Intent(getApplicationContext(), SoftKeyboardSetup.class));
         //super.onDestroy();
+        onDestroy();
         this.finish();
     }
 //*******
@@ -868,6 +965,17 @@ public class SoftKeyboardActivity extends Activity implements OnKeystrokeListene
             mediaPlayer.reset();
             mediaPlayer=MediaPlayer.create(SoftKeyboardActivity.this, R.raw.music);
             mediaPlayer.start();
+            int duration = mediaPlayer.getDuration();
+            seekBar.setMax(duration);
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if(!isSeekbarChaning){
+                        seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                    }
+                }
+            },0,50);
             startbutton.setEnabled(false);
         }catch(Exception e){
             e.printStackTrace();//
