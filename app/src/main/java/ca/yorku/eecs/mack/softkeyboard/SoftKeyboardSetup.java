@@ -103,7 +103,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
         spinSessionCode = (Spinner)findViewById(R.id.spinSessionCode);
         Spinner spinBlockCode = (Spinner)findViewById(R.id.spinBlockCode);
         spinGroupCode = (Spinner)findViewById(R.id.spinGroupCode);
-        editConditionCode = (EditText)findViewById(R.id.conditionCode);
+        editConditionCode = (EditText)findViewById(R.id.userName);
         spinKeyboardLayout = (Spinner)findViewById(R.id.keyboardLayout);
         editKeyboardScale = (EditText)findViewById(R.id.keyboardScale);
         editOffsetFromBottom = (EditText)findViewById(R.id.offsetFromBottom);

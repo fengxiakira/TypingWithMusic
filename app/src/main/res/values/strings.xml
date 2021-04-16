@@ -24,7 +24,7 @@
     <string name="setupSessionCode">Session code</string>
     <string name="setupBlockCode">Block code</string>
     <string name="setupGroupCode">Group code</string>
-    <string name="setupConditionCode">Condition code</string>
+    <string name="setupUserName">User name</string>
     <string name="setupKeyboardLayout">Keyboard layout</string>
     <string name="setupKeyboardScale">Keyboard scale</string>
     <string name="setupOffsetFromBottom">Offset from bottom</string>
