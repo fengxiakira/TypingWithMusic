@@ -45,6 +45,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
     String[] phrasesFileArray = {"phrases2", "phrases2", "quickbrownfox", "phrases100", "alphabet"};
     String[] ageArray = {"20-30","30-40","40-50"};
     String[] genderArray = {"Male","Female"};
+    String[] testArray = {"With music","Without music"};
 
     // default values for EditText fields (may be different if shared preferences saved)
     String conditionCode = "Your Name";
@@ -61,7 +62,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
     SharedPreferences.Editor spe;
     Button ok, save, exit;
     Vibrator vib;
-    private Spinner spinParticipantCode,spinAge,spinGender;
+    private Spinner spinParticipantCode,spinAge,spinGender,spinTestMode;
     private Spinner spinSessionCode, spinGroupCode, spinKeyboardLayout;
     private Spinner spinNumberOfPhrases, spinPhrasesFile;
     private EditText editConditionCode, editKeyboardScale, editOffsetFromBottom;
@@ -87,6 +88,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
         participantCode[0] = sp.getString("participantCode", participantCode[0]);
         ageArray[0] = sp.getString("age", ageArray[0]);
         genderArray[0] = sp.getString("gender",genderArray[0]);
+        testArray[0] = sp.getString("testMode",testArray[0]);
         sessionCode[0] = sp.getString("sessionCode", sessionCode[0]);
         // block code initialized in main activity (based on existing filenames)
         groupCode[0] = sp.getString("groupCode", groupCode[0]);
@@ -106,6 +108,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
         spinParticipantCode = (Spinner)findViewById(R.id.spinParticipantCode);
         spinAge = (Spinner)findViewById(R.id.spinAge);
         spinGender = (Spinner)findViewById(R.id.spinGender);
+        spinTestMode = (Spinner)findViewById(R.id.spinTestmode);
         spinSessionCode = (Spinner)findViewById(R.id.spinSessionCode);
         Spinner spinBlockCode = (Spinner)findViewById(R.id.spinBlockCode);
         spinGroupCode = (Spinner)findViewById(R.id.spinGroupCode);
@@ -136,6 +139,10 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
         ArrayAdapter<CharSequence> adapterAC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
                 ageArray);
         spinAge.setAdapter(adapterAC);
+
+        ArrayAdapter<CharSequence> adapterTC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
+                testArray);
+        spinTestMode.setAdapter(adapterTC);
 
         ArrayAdapter<CharSequence> adapterGenC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
                 genderArray);
@@ -207,6 +214,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
             String group = groupCode[spinGroupCode.getSelectedItemPosition()];
             String cond = editConditionCode.getText().toString();
             String age = ageArray[spinAge.getSelectedItemPosition()];
+            String testMode = testArray[spinTestMode.getSelectedItemPosition()];
             String gender = genderArray[spinGender.getSelectedItemPosition()];
             String keyLayout = keyboardLayout[spinKeyboardLayout.getSelectedItemPosition()];
             float keyScale = Float.parseFloat(editKeyboardScale.getText().toString());
@@ -224,6 +232,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
 //             b.putString("blockCode", block);
             b.putString("age",age);
             b.putString("gender",gender);
+            b.putString("testMode",testMode);
             b.putString("groupCode", group);
             b.putString("conditionCode", cond);
             b.putString("keyboardLayout", keyLayout);
@@ -269,6 +278,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
             spe.putString("numberOfPhrases", numberOfPhrases[spinNumberOfPhrases.getSelectedItemPosition()]);
             spe.putString("age",ageArray[spinAge.getSelectedItemPosition()]);
             spe.putString("gender",genderArray[spinGender.getSelectedItemPosition()]);
+            spe.putString("testMode",testArray[spinTestMode.getSelectedItemPosition()]);
             spe.putString("phrasesFile", phrasesFileArray[spinPhrasesFile.getSelectedItemPosition()]);
             spe.putBoolean("showPopupKey", checkShowPopup.isChecked());
             spe.putBoolean("lowercaseOnly", checkLowercaseOnly.isChecked());

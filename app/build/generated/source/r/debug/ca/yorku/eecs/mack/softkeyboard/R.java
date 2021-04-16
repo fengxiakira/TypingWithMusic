@@ -55,11 +55,12 @@ public final class R {
     public static final int spinGroupCode=0x7f030019;
     public static final int spinParticipantCode=0x7f03001a;
     public static final int spinSessionCode=0x7f03001b;
-    public static final int spinnerstyle=0x7f03001c;
-    public static final int transcribed=0x7f03001d;
-    public static final int tv_end=0x7f03001e;
-    public static final int tv_start=0x7f03001f;
-    public static final int userName=0x7f030020;
+    public static final int spinTestmode=0x7f03001c;
+    public static final int spinnerstyle=0x7f03001d;
+    public static final int transcribed=0x7f03001e;
+    public static final int tv_end=0x7f03001f;
+    public static final int tv_start=0x7f030020;
+    public static final int userName=0x7f030021;
   }
   public static final class layout {
     public static final int main=0x7f040000;
@@ -103,9 +104,10 @@ public final class R {
     public static final int setupSessionCode=0x7f06001a;
     public static final int setupShowPopupKey=0x7f06001b;
     public static final int setupShowPresentedTextDuringEntry=0x7f06001c;
-    public static final int setupUserName=0x7f06001d;
-    public static final int setup_subtitle=0x7f06001e;
-    public static final int setup_title=0x7f06001f;
-    public static final int showrecognizedtextduringentry=0x7f060020;
+    public static final int setupTestMode=0x7f06001d;
+    public static final int setupUserName=0x7f06001e;
+    public static final int setup_subtitle=0x7f06001f;
+    public static final int setup_title=0x7f060020;
+    public static final int showrecognizedtextduringentry=0x7f060021;
   }
 }
