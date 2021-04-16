@@ -1,4 +1,4 @@
-#Fri Apr 16 12:27:45 EDT 2021
+#Fri Apr 16 14:29:10 EDT 2021
 base.0=/Users/akira/Desktop/SoftKeyboard/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

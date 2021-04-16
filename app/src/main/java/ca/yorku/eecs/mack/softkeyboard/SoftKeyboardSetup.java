@@ -43,9 +43,11 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
     String[] keyboardLayout = {"Qwerty", "Qwerty", "Opti", "Opti II", "Fitaly", "Lewis", "Metropolis"};
     String[] numberOfPhrases = {"5", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     String[] phrasesFileArray = {"phrases2", "phrases2", "quickbrownfox", "phrases100", "alphabet"};
+    String[] ageArray = {"20-30","30-40","40-50"};
+    String[] genderArray = {"Male","Female"};
 
     // default values for EditText fields (may be different if shared preferences saved)
-    String conditionCode = "C01";
+    String conditionCode = "Your Name";
     String keyboardScale = "1.0";
     String offsetFromBottom = "80";
 
@@ -59,7 +61,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
     SharedPreferences.Editor spe;
     Button ok, save, exit;
     Vibrator vib;
-    private Spinner spinParticipantCode;
+    private Spinner spinParticipantCode,spinAge,spinGender;
     private Spinner spinSessionCode, spinGroupCode, spinKeyboardLayout;
     private Spinner spinNumberOfPhrases, spinPhrasesFile;
     private EditText editConditionCode, editKeyboardScale, editOffsetFromBottom;
@@ -83,6 +85,8 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
 
         // overwrite 1st entry from shared preferences, if corresponding value exits
         participantCode[0] = sp.getString("participantCode", participantCode[0]);
+        ageArray[0] = sp.getString("age", ageArray[0]);
+        genderArray[0] = sp.getString("gender",genderArray[0]);
         sessionCode[0] = sp.getString("sessionCode", sessionCode[0]);
         // block code initialized in main activity (based on existing filenames)
         groupCode[0] = sp.getString("groupCode", groupCode[0]);
@@ -100,6 +104,8 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
 
         // get references to widgets in setup dialog
         spinParticipantCode = (Spinner)findViewById(R.id.spinParticipantCode);
+        spinAge = (Spinner)findViewById(R.id.spinAge);
+        spinGender = (Spinner)findViewById(R.id.spinGender);
         spinSessionCode = (Spinner)findViewById(R.id.spinSessionCode);
         Spinner spinBlockCode = (Spinner)findViewById(R.id.spinBlockCode);
         spinGroupCode = (Spinner)findViewById(R.id.spinGroupCode);
@@ -126,6 +132,14 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
         ArrayAdapter<CharSequence> adapterSC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
                 sessionCode);
         spinSessionCode.setAdapter(adapterSC);
+
+        ArrayAdapter<CharSequence> adapterAC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
+                ageArray);
+        spinAge.setAdapter(adapterAC);
+
+        ArrayAdapter<CharSequence> adapterGenC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
+                genderArray);
+        spinGender.setAdapter(adapterGenC);
 
         ArrayAdapter<CharSequence> adapterBC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
                 blockCode);
@@ -189,9 +203,11 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
             // get user's choices
             String part = participantCode[spinParticipantCode.getSelectedItemPosition()];
             String sess = sessionCode[spinSessionCode.getSelectedItemPosition()];
-            // String block = blockCode[spinBlock.getSelectedItemPosition()];
+//             String block = blockCode[spinBlock.getSelectedItemPosition()];
             String group = groupCode[spinGroupCode.getSelectedItemPosition()];
             String cond = editConditionCode.getText().toString();
+            String age = ageArray[spinAge.getSelectedItemPosition()];
+            String gender = genderArray[spinGender.getSelectedItemPosition()];
             String keyLayout = keyboardLayout[spinKeyboardLayout.getSelectedItemPosition()];
             float keyScale = Float.parseFloat(editKeyboardScale.getText().toString());
             float offsetFromBottom = Float.parseFloat(editOffsetFromBottom.getText().toString());
@@ -205,7 +221,9 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
             Bundle b = new Bundle();
             b.putString("participantCode", part);
             b.putString("sessionCode", sess);
-            // b.putString("blockCode", block);
+//             b.putString("blockCode", block);
+            b.putString("age",age);
+            b.putString("gender",gender);
             b.putString("groupCode", group);
             b.putString("conditionCode", cond);
             b.putString("keyboardLayout", keyLayout);
@@ -249,6 +267,8 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
             spe.putString("keyboardScale", editKeyboardScale.getText().toString());
             spe.putString("offsetFromBottom", editOffsetFromBottom.getText().toString());
             spe.putString("numberOfPhrases", numberOfPhrases[spinNumberOfPhrases.getSelectedItemPosition()]);
+            spe.putString("age",ageArray[spinAge.getSelectedItemPosition()]);
+            spe.putString("gender",genderArray[spinGender.getSelectedItemPosition()]);
             spe.putString("phrasesFile", phrasesFileArray[spinPhrasesFile.getSelectedItemPosition()]);
             spe.putBoolean("showPopupKey", checkShowPopup.isChecked());
             spe.putBoolean("lowercaseOnly", checkLowercaseOnly.isChecked());

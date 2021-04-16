@@ -25,6 +25,8 @@
     <string name="setupBlockCode">Block code</string>
     <string name="setupGroupCode">Group code</string>
     <string name="setupUserName">User name</string>
+    <string name="setupAge">Age</string>
+    <string name="setupGender">Gender</string>
     <string name="setupKeyboardLayout">Keyboard layout</string>
     <string name="setupKeyboardScale">Keyboard scale</string>
     <string name="setupOffsetFromBottom">Offset from bottom</string>

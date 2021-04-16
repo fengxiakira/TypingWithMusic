@@ -102,6 +102,54 @@
             <!-- Use the following TableRow as the template for SPINNER setup items -->
             <TableRow>
                 <TextView
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/setupUserName"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <EditText
+                    android:id="@+id/userName"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:hint="@string/hintText"
+                    android:imeOptions="actionSend"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/setupAge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <Spinner
+                    android:id="@+id/spinAge"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:text="@string/setupGender"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <Spinner
+                    android:id="@+id/spinGender"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
                     android:gravity="end"
                     android:paddingRight="5dp"
                     android:paddingEnd="5dp"
@@ -162,23 +210,7 @@
             </TableRow>
 
             <!-- Use the following TableRow as the template for EDITTEXT setup items -->
-            <TableRow>
-                <TextView
-                    android:gravity="right"
-                    android:paddingRight="5dp"
-                    android:text="@string/setupUserName"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-                <EditText
-                    android:id="@+id/userName"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:hint="@string/hintText"
-                    android:imeOptions="actionSend"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
-            </TableRow>
 
             <TableRow>
                 <TextView
