@@ -1,95 +1,36 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/akira/Desktop/SoftKeyboard/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/strings.xml",
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/alphabet.xml",
                     "from": {
-                        "startLines": "3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5,-1,-1",
-                        "startColumns": "4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,-1,-1",
-                        "startOffsets": "56,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,153,-1,-1",
-                        "endColumns": "50,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,69,-1,-1",
-                        "endOffsets": "102,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,218,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "33946,33997,34046,34103,34141,34190,34244,34280,34318,34376,34438,34472,34533,34586,34624,34677,34718,34772,34819,34873,34937,34999,35061,35128,35197,35262,35320,35378,35439,35534,35586,35638,35708,35754",
-                        "endColumns": "50,48,56,37,48,53,35,37,57,61,33,60,52,37,52,40,53,46,53,63,61,61,66,68,64,57,57,60,94,51,51,69,45,91",
-                        "endOffsets": "33992,34041,34098,34136,34185,34239,34275,34313,34371,34433,34467,34528,34581,34619,34672,34713,34767,34814,34868,34932,34994,35056,35123,35192,35257,35315,35373,35434,35529,35581,35633,35703,35749,35841"
-                    }
-                },
-                {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/quickbrownfox.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "776",
+                        "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "32663",
-                        "endLines": "778",
+                        "startOffsets": "57",
+                        "endLines": "4",
                         "endColumns": "9",
-                        "endOffsets": "32760"
-                    }
-                },
-                {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/opti.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "endOffsets": "134"
                     },
                     "to": {
-                        "startLines": "102",
+                        "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "3488",
-                        "endLines": "136",
-                        "endColumns": "12",
-                        "endOffsets": "4691"
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "9",
+                        "endOffsets": "130"
                     }
                 },
                 {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/qwerty.xml",
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/lewis.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "779",
+                        "startLines": "3",
                         "startColumns": "4",
-                        "startOffsets": "32765",
-                        "endLines": "810",
+                        "startOffsets": "59",
+                        "endLines": "34",
                         "endColumns": "12",
-                        "endOffsets": "33941"
-                    }
-                },
-                {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/fitaly.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "5",
-                        "startColumns": "4",
-                        "startOffsets": "135",
-                        "endLines": "37",
-                        "endColumns": "12",
-                        "endOffsets": "1262"
-                    }
-                },
-                {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/lewis.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "endOffsets": "1177"
                     },
                     "to": {
                         "startLines": "38",
@@ -101,59 +42,33 @@
                     }
                 },
                 {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/metropolis.xml",
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/qwerty.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "70",
+                        "startLines": "3",
                         "startColumns": "4",
-                        "startOffsets": "2359",
-                        "endLines": "101",
+                        "startOffsets": "59",
+                        "endLines": "34",
                         "endColumns": "12",
-                        "endOffsets": "3483"
-                    }
-                },
-                {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/phrases100.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "endOffsets": "1266"
                     },
                     "to": {
-                        "startLines": "172",
+                        "startLines": "779",
                         "startColumns": "4",
-                        "startOffsets": "5905",
-                        "endLines": "273",
-                        "endColumns": "9",
-                        "endOffsets": "10310"
-                    }
-                },
-                {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/opti2.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "137",
-                        "startColumns": "4",
-                        "startOffsets": "4696",
-                        "endLines": "171",
+                        "startOffsets": "32765",
+                        "endLines": "810",
                         "endColumns": "12",
-                        "endOffsets": "5900"
+                        "endOffsets": "33941"
                     }
                 },
                 {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/phrases2.xml",
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/phrases2.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "503",
+                        "endColumns": "12",
+                        "endOffsets": "22901"
                     },
                     "to": {
                         "startLines": "274",
@@ -165,19 +80,134 @@
                     }
                 },
                 {
-                    "source": "/Users/akira/Desktop/SoftKeyboard/app/src/main/res/values/alphabet.xml",
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/strings.xml",
                     "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
+                        "startLines": "3,14,16,11,15,8,6,7,19,17,9,12,18,10,13,27,24,28,25,30,31,36,33,32,22,34,23,35,37,29,26,5,4,20",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,1,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "56,591,689,439,640,313,223,267,858,746,367,477,805,401,538,1292,1132,1333,1186,1432,1496,1813,1627,1558,1009,1694,1074,1752,1875,1380,1240,153,107,916",
+                        "endColumns": "50,48,56,37,48,53,43,45,57,61,33,60,49,37,52,40,53,46,53,63,61,61,66,68,64,57,57,60,94,51,51,69,45,91",
+                        "endOffsets": "102,635,741,472,684,362,262,308,911,803,396,533,853,434,586,1328,1181,1375,1235,1491,1553,1870,1689,1622,1069,1747,1127,1808,1965,1427,1287,218,148,1003"
                     },
                     "to": {
+                        "startLines": "811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "33946,33997,34046,34103,34141,34190,34244,34280,34318,34376,34438,34472,34533,34586,34624,34677,34718,34772,34819,34873,34937,34999,35061,35128,35197,35262,35320,35378,35439,35534,35586,35638,35708,35754",
+                        "endColumns": "50,48,56,37,48,53,35,37,57,61,33,60,52,37,52,40,53,46,53,63,61,61,66,68,64,57,57,60,94,51,51,69,45,91",
+                        "endOffsets": "33992,34041,34098,34136,34185,34239,34275,34313,34371,34433,34467,34528,34581,34619,34672,34713,34767,34814,34868,34932,34994,35056,35123,35192,35257,35315,35373,35434,35529,35581,35633,35703,35749,35841"
+                    }
+                },
+                {
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/fitaly.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endLines": "35",
+                        "endColumns": "12",
+                        "endOffsets": "1217"
+                    },
+                    "to": {
+                        "startLines": "5",
+                        "startColumns": "4",
+                        "startOffsets": "135",
+                        "endLines": "37",
+                        "endColumns": "12",
+                        "endOffsets": "1262"
+                    }
+                },
+                {
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/phrases100.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "1",
+                        "startOffsets": "54",
+                        "endLines": "103",
+                        "endColumns": "9",
+                        "endOffsets": "4560"
+                    },
+                    "to": {
+                        "startLines": "172",
+                        "startColumns": "4",
+                        "startOffsets": "5905",
+                        "endLines": "273",
+                        "endColumns": "9",
+                        "endOffsets": "10310"
+                    }
+                },
+                {
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/opti.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endLines": "37",
+                        "endColumns": "12",
+                        "endOffsets": "1296"
+                    },
+                    "to": {
+                        "startLines": "102",
+                        "startColumns": "4",
+                        "startOffsets": "3488",
+                        "endLines": "136",
+                        "endColumns": "12",
+                        "endOffsets": "4691"
+                    }
+                },
+                {
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/metropolis.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endLines": "34",
+                        "endColumns": "12",
+                        "endOffsets": "1214"
+                    },
+                    "to": {
+                        "startLines": "70",
+                        "startColumns": "4",
+                        "startOffsets": "2359",
+                        "endLines": "101",
+                        "endColumns": "12",
+                        "endOffsets": "3483"
+                    }
+                },
+                {
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/opti2.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endLines": "37",
+                        "endColumns": "12",
+                        "endOffsets": "1297"
+                    },
+                    "to": {
+                        "startLines": "137",
+                        "startColumns": "4",
+                        "startOffsets": "4696",
+                        "endLines": "171",
+                        "endColumns": "12",
+                        "endOffsets": "5900"
+                    }
+                },
+                {
+                    "source": "/Users/akira/Desktop/4443/Project/SoftKeyboard/app/src/main/res/values/quickbrownfox.xml",
+                    "from": {
                         "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "55",
+                        "startOffsets": "57",
                         "endLines": "4",
                         "endColumns": "9",
-                        "endOffsets": "130"
+                        "endOffsets": "156"
+                    },
+                    "to": {
+                        "startLines": "776",
+                        "startColumns": "4",
+                        "startOffsets": "32663",
+                        "endLines": "778",
+                        "endColumns": "9",
+                        "endOffsets": "32760"
                     }
                 }
             ]

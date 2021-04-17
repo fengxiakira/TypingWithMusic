@@ -62,9 +62,10 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
     SharedPreferences.Editor spe;
     Button ok, save, exit;
     Vibrator vib;
-    private Spinner spinParticipantCode,spinAge,spinGender,spinTestMode;
+    private Spinner spinParticipantCode,spinAge,spinGender,spinTestMode,spinBlockCode;
     private Spinner spinSessionCode, spinGroupCode, spinKeyboardLayout;
     private Spinner spinNumberOfPhrases, spinPhrasesFile;
+    private ArrayAdapter<CharSequence> adapterPC,adapterSC,adapterAC,adapterTC,adapterGenC,adapterBC,adapterGC,adapterKL,adapterNOP,adapterPF;
     private EditText editConditionCode, editKeyboardScale, editOffsetFromBottom;
     private CheckBox checkPositionAtBottom;
     private CheckBox checkShowPopup;
@@ -74,7 +75,22 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
 
     /**
      * Called when the activity is first created.
+     *
+     *
      */
+
+    private Spinner spinRoutine(String key, String[] options, int resourceId)
+    {
+        options[0] = sp.getString(key,options[0]);
+        Spinner spinner = (Spinner) findViewById(resourceId);
+
+        // initialise spinner adapters
+        ArrayAdapter<CharSequence> adapterTemp = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
+                options);
+        spinner.setAdapter(adapterTemp);
+        return spinner;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -83,41 +99,33 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
 
         // get a reference to a SharedPreferences object (used to store, retrieve, and save setup parameters)
         sp = this.getPreferences(MODE_PRIVATE);
+        spinParticipantCode=spinRoutine("participantcode",participantCode,R.id.spinParticipantCode);
+        spinAge=spinRoutine("age",ageArray,R.id.spinAge);
+        spinGender = spinRoutine("gender",genderArray,R.id.spinGender);
+        spinTestMode=spinRoutine("testMode",testArray,R.id.spinTestmode);
+        spinSessionCode=spinRoutine("sessionCode",sessionCode,R.id.spinSessionCode);
+        spinGroupCode=spinRoutine("groupCode",groupCode,R.id.spinGroupCode);
+        spinKeyboardLayout=spinRoutine("keyboardLayout",keyboardLayout,R.id.keyboardLayout);
+        spinNumberOfPhrases=spinRoutine("numberOfPhrases",numberOfPhrases,R.id.numberOfPhrases);
+        spinPhrasesFile=spinRoutine("phrasesFile",phrasesFileArray,R.id.phrasesFile);
+        spinBlockCode=spinRoutine(" ",blockCode,R.id.spinBlockCode);
+
+
 
         // overwrite 1st entry from shared preferences, if corresponding value exits
-        participantCode[0] = sp.getString("participantCode", participantCode[0]);
-        ageArray[0] = sp.getString("age", ageArray[0]);
-        genderArray[0] = sp.getString("gender",genderArray[0]);
-        testArray[0] = sp.getString("testMode",testArray[0]);
-        sessionCode[0] = sp.getString("sessionCode", sessionCode[0]);
-        // block code initialized in main activity (based on existing filenames)
-        groupCode[0] = sp.getString("groupCode", groupCode[0]);
         conditionCode = sp.getString("conditionCode", conditionCode);
-        keyboardLayout[0] = sp.getString("keyboardLayout", keyboardLayout[0]);
         keyboardScale = sp.getString("keyboardScale", keyboardScale);
         offsetFromBottom = sp.getString("offsetFromBottom", offsetFromBottom);
-        numberOfPhrases[0] = sp.getString("numberOfPhrases", numberOfPhrases[0]);
-        phrasesFileArray[0] = sp.getString("phrasesFile", phrasesFileArray[0]);
 
         positionAtBottom = sp.getBoolean("positionAtBottom", positionAtBottom);
         showPopupKey = sp.getBoolean("showPopupKey", showPopupKey);
         lowercaseOnly = sp.getBoolean("lowercaseOnly", lowercaseOnly);
         showPresentedText = sp.getBoolean("showPresented", showPresentedText);
 
-        // get references to widgets in setup dialog
-        spinParticipantCode = (Spinner)findViewById(R.id.spinParticipantCode);
-        spinAge = (Spinner)findViewById(R.id.spinAge);
-        spinGender = (Spinner)findViewById(R.id.spinGender);
-        spinTestMode = (Spinner)findViewById(R.id.spinTestmode);
-        spinSessionCode = (Spinner)findViewById(R.id.spinSessionCode);
-        Spinner spinBlockCode = (Spinner)findViewById(R.id.spinBlockCode);
-        spinGroupCode = (Spinner)findViewById(R.id.spinGroupCode);
         editConditionCode = (EditText)findViewById(R.id.userName);
-        spinKeyboardLayout = (Spinner)findViewById(R.id.keyboardLayout);
         editKeyboardScale = (EditText)findViewById(R.id.keyboardScale);
         editOffsetFromBottom = (EditText)findViewById(R.id.offsetFromBottom);
-        spinNumberOfPhrases = (Spinner)findViewById(R.id.numberOfPhrases);
-        spinPhrasesFile = (Spinner)findViewById(R.id.phrasesFile);
+
         checkShowPopup = (CheckBox)findViewById(R.id.showPopupKey);
         checkLowercaseOnly = (CheckBox)findViewById(R.id.lowercaseOnly);
         checkShowPresented = (CheckBox)findViewById(R.id.showPresentedText);
@@ -127,46 +135,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
         save = (Button)findViewById(R.id.save);
         exit = (Button)findViewById(R.id.exit);
 
-        // initialise spinner adapters
-        ArrayAdapter<CharSequence> adapterPC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                participantCode);
-        spinParticipantCode.setAdapter(adapterPC);
 
-        ArrayAdapter<CharSequence> adapterSC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                sessionCode);
-        spinSessionCode.setAdapter(adapterSC);
-
-        ArrayAdapter<CharSequence> adapterAC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                ageArray);
-        spinAge.setAdapter(adapterAC);
-
-        ArrayAdapter<CharSequence> adapterTC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                testArray);
-        spinTestMode.setAdapter(adapterTC);
-
-        ArrayAdapter<CharSequence> adapterGenC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                genderArray);
-        spinGender.setAdapter(adapterGenC);
-
-        ArrayAdapter<CharSequence> adapterBC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                blockCode);
-        spinBlockCode.setAdapter(adapterBC);
-
-        ArrayAdapter<CharSequence> adapterGC = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                groupCode);
-        spinGroupCode.setAdapter(adapterGC);
-
-        ArrayAdapter<CharSequence> adapterKL = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                keyboardLayout);
-        spinKeyboardLayout.setAdapter(adapterKL);
-
-        ArrayAdapter<CharSequence> adapterNOP = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                numberOfPhrases);
-        spinNumberOfPhrases.setAdapter(adapterNOP);
-
-        ArrayAdapter<CharSequence> adapterPF = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle,
-                phrasesFileArray);
-        spinPhrasesFile.setAdapter(adapterPF);
 
         // initialize EditText setup items
         editConditionCode.setText(conditionCode);
@@ -210,7 +179,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
             // get user's choices
             String part = participantCode[spinParticipantCode.getSelectedItemPosition()];
             String sess = sessionCode[spinSessionCode.getSelectedItemPosition()];
-//             String block = blockCode[spinBlock.getSelectedItemPosition()];
+            String block = blockCode[spinBlockCode.getSelectedItemPosition()];
             String group = groupCode[spinGroupCode.getSelectedItemPosition()];
             String cond = editConditionCode.getText().toString();
             String age = ageArray[spinAge.getSelectedItemPosition()];
@@ -229,7 +198,7 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
             Bundle b = new Bundle();
             b.putString("participantCode", part);
             b.putString("sessionCode", sess);
-//             b.putString("blockCode", block);
+             b.putString("blockCode", block);
             b.putString("age",age);
             b.putString("gender",gender);
             b.putString("testMode",testMode);
