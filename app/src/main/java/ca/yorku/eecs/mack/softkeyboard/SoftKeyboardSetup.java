@@ -65,7 +65,6 @@ public class SoftKeyboardSetup extends Activity implements TextWatcher
     private Spinner spinParticipantCode,spinAge,spinGender,spinTestMode,spinBlockCode;
     private Spinner spinSessionCode, spinGroupCode, spinKeyboardLayout;
     private Spinner spinNumberOfPhrases, spinPhrasesFile;
-    private ArrayAdapter<CharSequence> adapterPC,adapterSC,adapterAC,adapterTC,adapterGenC,adapterBC,adapterGC,adapterKL,adapterNOP,adapterPF;
     private EditText editConditionCode, editKeyboardScale, editOffsetFromBottom;
     private CheckBox checkPositionAtBottom;
     private CheckBox checkShowPopup;
